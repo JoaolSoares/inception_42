@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/09 00:10:02 by jlucas-s          #+#    #+#              #
-#    Updated: 2024/02/05 22:48:49 by user42           ###   ########.fr        #
+#    Updated: 2024/02/06 15:53:32 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ NOCOLOR		=	\033[0m
 
 all:
 	@ echo "${GREEN}Creating data directory:"
-	sudo mkdir -p /home/jlucas-s/data/wordpress
-	sudo mkdir -p /home/jlucas-s/data/mariadb
+	sudo mkdir -p /home/${LOGIN}/data/wordpress
+	sudo mkdir -p /home/${LOGIN}/data/mariadb
 	@ echo "${NOCOLOR}\n"
 
 	@ echo "${GREEN}Upping Docker compose:${NOCOLOR}"
@@ -40,7 +40,7 @@ clean:
 	@ echo "${RED}Docker remove networks:${NOCOLOR}"	
 	@ docker network rm inception			
 	@ echo "${RED}Removing data directory:${NOCOLOR}"	
-	sudo rm -rf /home/jlucas-s/data
+	sudo rm -rf /home/${LOGIN}/data
 
 re: clean all
 
