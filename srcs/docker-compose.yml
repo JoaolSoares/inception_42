@@ -1,3 +1,5 @@
+name: inception
+version: "3"
 
 services:
   mariadb:
@@ -12,6 +14,8 @@ services:
       - inception
     volumes:
       - mariadb:/var/lib/mysql
+    restart:
+      always
 
   wordpress:
     container_name: wordpress
@@ -25,6 +29,8 @@ services:
       - inception
     volumes:
       - wordpress:/var/www/html
+    restart:
+      always
     depends_on:
       - mariadb
 
@@ -38,12 +44,14 @@ services:
       - 443:443
     volumes:
       - wordpress:/var/www/html
+    restart:
+      always
     depends_on:
       - wordpress
 
 networks:
   inception:
-    name: inception
+    name: inception_network
 
 volumes:
   mariadb:
